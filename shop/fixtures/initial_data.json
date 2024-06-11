@@ -1,0 +1,145 @@
+[
+    {
+        "model": "shop.category",
+        "pk": 1,
+        "fields": {
+            "name": "Electronics"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 2,
+        "fields": {
+            "name": "Furniture"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 3,
+        "fields": {
+            "name": "Clothing"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 4,
+        "fields": {
+            "name": "Books"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 5,
+        "fields": {
+            "name": "Toys"
+        }
+    },
+    {
+        "model": "shop.region",
+        "pk": 1,
+        "fields": {
+            "name": "North America"
+        }
+    },
+    {
+        "model": "shop.region",
+        "pk": 2,
+        "fields": {
+            "name": "Europe"
+        }
+    },
+    {
+        "model": "shop.region",
+        "pk": 3,
+        "fields": {
+            "name": "Asia"
+        }
+    },
+    {
+        "model": "shop.region",
+        "pk": 4,
+        "fields": {
+            "name": "South America"
+        }
+    },
+    {
+        "model": "shop.region",
+        "pk": 5,
+        "fields": {
+            "name": "Africa"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 1,
+        "fields": {
+            "name": "Laptop",
+            "description": "A high-performance laptop",
+            "price": "999.99",
+            "stock_quantity": 50,
+            "category": 1,
+            "region": 1,
+            "image_url": "https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 2,
+        "fields": {
+            "name": "Sofa",
+            "description": "A comfortable sofa",
+            "price": "499.99",
+            "stock_quantity": 20,
+            "category": 2,
+            "region": 2,
+            "image_url": "https://images.pexels.com/photos/3757055/pexels-photo-3757055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 3,
+        "fields": {
+            "name": "T-Shirt",
+            "description": "A stylish t-shirt",
+            "price": "19.99",
+            "stock_quantity": 100,
+            "category": 3,
+            "region": 3,
+            "image_url": "https://th.bing.com/th/id/OIP.-WiXC06a6_OvbsxqqWGvXQHaIV?w=639&h=719&rs=1&pid=ImgDetMain"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 4,
+        "fields": {
+            "name": "Book",
+            "description": "An interesting book",
+            "price": "14.99",
+            "stock_quantity": 200,
+            "category": 4,
+            "region": 4,
+            "image_url": "https://images.pexels.com/photos/4238505/pexels-photo-4238505.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        }
+    },
+    {
+        "model": "shop.product",
+        "pk": 5,
+        "fields": {
+            "name": "Toy Car",
+            "description": "A fun toy car",
+            "price": "29.99",
+            "stock_quantity": 75,
+            "category": 5,
+            "region": 5,
+            "image_url": "https://images.pexels.com/photos/97353/pexels-photo-97353.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        }
+    },
+    {
+        "model": "shop.cart",
+        "pk": 1,
+        "fields": {
+            "product": 1,
+            "quantity": 1
+        }
+    }
+]
