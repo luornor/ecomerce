@@ -167,7 +167,7 @@ function removeFromCart(itemId) {
     .then(response => {
         if (response.ok) {
             console.log('Cart item deleted successfully');
-            // Optionally, you can perform any other actions after deletion
+            fetchCart();
         } else {
             console.error('Error deleting cart item:', response.statusText);
         }

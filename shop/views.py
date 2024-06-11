@@ -109,9 +109,9 @@ class CartViewSet(viewsets.ModelViewSet):
 
         return Response(serializer.data)
 
-    def destroy(self, request, *args, **kwargs):
+    def delete(self, request,product_id, *args, **kwargs):
         try:
-            instance = self.get_object()
+            instance = self.get_object(id=product_id)
             self.perform_destroy(instance)
         except:
             return Response(status=status.HTTP_404_NOT_FOUND)
