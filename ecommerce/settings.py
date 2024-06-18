@@ -106,7 +106,9 @@ DATABASES = {
 }
 
 # To use the DATABASE_URL
-DATABASES['default'] = dj_database_url.parse(config('DATABASE_URL'))
+DATABASES['default'] = dj_database_url.parse(
+    config('DATABASE_URL',default='postgres://myuser:mypassword@localhost:5432/mydatabase')
+    )
 
 
 # Password validation
