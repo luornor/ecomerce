@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-19+&gfg&42utqlrb&-mb6)p-4!0dyrs^8&^7&y8c%#-=go*)a9'
+SECRET_KEY = config('SECRET_KEY',default='django-insecure--htf$)b6!wvu4!n=*gw$$l15*a4c1+*)8@8chd*q5_#$$3*f6u')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
@@ -91,19 +93,21 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 #     }
 # }
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ecommerce_db',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': config('DB_ENGINE'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT', cast=int),
     }
 }
-DATABASES={
-    'default':dj_database_url.parse("postgres://jiji_ecomerce_user:h281dP6uk7vmhlMr0g1u41zpYsSOLQxD@dpg-cpkaojkf7o1s73clumeg-a/jiji_ecomerce")
-}
+
+# To use the DATABASE_URL
+DATABASES['default'] = dj_database_url.parse(config('DATABASE_URL'))
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
