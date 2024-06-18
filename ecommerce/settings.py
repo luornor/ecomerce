@@ -96,12 +96,12 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': config('DB_ENGINE'),
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT', cast=int),
+        'ENGINE': config('DB_ENGINE',default='django.db.backends.sqlite3'),
+        'NAME': config('DB_NAME', default='product_db'),
+        'USER': config('DB_USER',default = 'user'),
+        'PASSWORD': config('DB_PASSWORD',default=''),
+        'HOST': config('DB_HOST',default='host_user'),
+        'PORT': config('DB_PORT',default = 3304, cast=int),
     }
 }
 
