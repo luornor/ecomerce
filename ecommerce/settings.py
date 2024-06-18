@@ -100,7 +100,7 @@ DATABASES = {
 }
 
 # To use the DATABASE_URL
-DATABASES['default'] = dj_database_url.parse('postgres://jiji_ecomerce_user:h281dP6uk7vmhlMr0g1u41zpYsSOLQxD@dpg-cpkaojkf7o1s73clumeg-a/jiji_ecomerce')
+DATABASES['default'] = dj_database_url.parse('postgres://jiji_db_y1fa_user:vzmmNUVsHcZdiHimhtfQKQHn2FqiibFH@dpg-cpop8qqju9rs738tedf0-a.oregon-postgres.render.com/jiji_db_y1fa')
 
 
 # Password validation
