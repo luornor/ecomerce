@@ -161,7 +161,8 @@ function removeFromCart(itemId) {
     fetch(`/api/cart/${itemId}/`, {
         method: 'DELETE',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
         }
     })
     .then(response => {

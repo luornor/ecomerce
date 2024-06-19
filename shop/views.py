@@ -1,23 +1,20 @@
-# Create your views here.
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render
 from rest_framework.response import Response
-from rest_framework.decorators import action
-
-from rest_framework import status
-from rest_framework import permissions
-
-
-from rest_framework import viewsets
+from rest_framework.decorators import action, api_view, permission_classes
+from rest_framework import status, viewsets
+from rest_framework.permissions import AllowAny
 from .models import Category, Region, Product, Cart
-from .serializers import CategorySerializer, RegionSerializer, ProductSerializer, CartSerializer,ProductStockSerializer
+from .serializers import CategorySerializer, RegionSerializer, ProductSerializer, CartSerializer, ProductStockSerializer
+from django.views.decorators.csrf import csrf_exempt
+
 
 def index(request):
-    return render(request,'shop/index.html')
-
+    return render(request, 'shop/index.html')
 
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    permission_classes = [AllowAny]
 
     @action(detail=True, methods=['get'], url_path='stock')
     def check_stock(self, request, pk=None):
@@ -27,7 +24,7 @@ class ProductViewSet(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Product.DoesNotExist:
             return Response({'error': 'Product not found'}, status=status.HTTP_404_NOT_FOUND)
-        
+
     def get_queryset(self):
         queryset = super().get_queryset()
         category_id = self.request.query_params.get('category')
@@ -45,33 +42,13 @@ class ProductViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(price__lte=max_price)
 
         return queryset
-        
 
 class CartViewSet(viewsets.ModelViewSet):
-    """
-    list:
-    Return a list of all the items in the cart.
-
-    create:
-    Add a new item to the cart.
-
-    retrieve:
-    Retrieve a specific cart item by its ID.
-
-    update:
-    Update a cart item instance.
-
-    partial_update:
-    Partially update a cart item instance.
-
-    destroy:
-    Remove an item from the cart.
-    """
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [AllowAny]
 
-
+    @csrf_exempt
     def create(self, request, *args, **kwargs):
         product_id = request.data.get('product')
         quantity = request.data.get('quantity')
@@ -92,6 +69,7 @@ class CartViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(cart_item)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+    @csrf_exempt
     def update(self, request, *args, **kwargs):
         partial = kwargs.pop('partial', False)
         instance = self.get_object()
@@ -103,64 +81,27 @@ class CartViewSet(viewsets.ModelViewSet):
         instance.quantity = quantity
         instance.save()
 
-        serializer = self.get_serializer(instance, data=request.data, partial=partial) 
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer)
 
         return Response(serializer.data)
 
-    def delete(self, request,product_id, *args, **kwargs):
+    @csrf_exempt
+    def destroy(self, request, *args, **kwargs):
         try:
-            instance = self.get_object(id=product_id)
+            instance = self.get_object()
             self.perform_destroy(instance)
-        except:
+        except Cart.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
+
 class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    list:
-    Return a list of all the existing categories.
-
-    create:
-    Create a new category instance.
-
-    retrieve:
-    Retrieve a specific category by its ID.
-
-    update:
-    Update a category instance.
-
-    partial_update:
-    Partially update a category instance.
-
-    destroy:
-    Delete a category instance.
-    """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    permission_classes = [AllowAny]
 
 class RegionViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    list:
-    Return a list of all the existing regions.
-
-    create:
-    Create a new region instance.
-
-    retrieve:
-    Retrieve a specific region by its ID.
-
-    update:
-    Update a region instance.
-
-    partial_update:
-    Partially update a region instance.
-
-    destroy:
-    Delete a region instance.
-    """
-
     queryset = Region.objects.all()
     serializer_class = RegionSerializer
-
+    permission_classes = [AllowAny]
