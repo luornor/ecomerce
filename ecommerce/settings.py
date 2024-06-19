@@ -63,6 +63,8 @@ MIDDLEWARE = [
 CSRF_COOKIE_HTTPONLY = False
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+
 ROOT_URLCONF = 'ecommerce.urls'
 
 TEMPLATES = [
