@@ -29,7 +29,8 @@ SECRET_KEY = config('SECRET_KEY',default='django-insecure--htf$)b6!wvu4!n=*gw$$l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "https://jiji-ecomerce.onrender.com"]
+
 
 
 # Application definition
