@@ -66,6 +66,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://jiji-ecomerce.onrender.com",
+    "https://jiji-ghana.vercel.app",
 ]
 
 REST_FRAMEWORK = {
