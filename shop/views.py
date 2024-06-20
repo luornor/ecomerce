@@ -24,7 +24,7 @@ class ProductViewSet(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Product.DoesNotExist:
             return Response({'error': 'Product not found'}, status=status.HTTP_404_NOT_FOUND)
-
+        
     def get_queryset(self):
         queryset = super().get_queryset()
         category_id = self.request.query_params.get('category')
@@ -95,6 +95,7 @@ class CartViewSet(viewsets.ModelViewSet):
         except Cart.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Category.objects.all()

@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -60,9 +61,12 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 
 ]
-CSRF_COOKIE_HTTPONLY = False
 
-CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://jiji-ecomerce.onrender.com",
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -106,8 +110,6 @@ else:
         }
     }
 
-# To use the DATABASE_URL
-# DATABASES['default'] = dj_database_url.parse('postgres://jiji_db_y1fa_user:vzmmNUVsHcZdiHimhtfQKQHn2FqiibFH@dpg-cpop8qqju9rs738tedf0-a.oregon-postgres.render.com/jiji_db_y1fa')
 
 
 # Password validation

@@ -10,11 +10,11 @@ class RegionAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'description', 'price', 'stock_quantity', 'get_category', 'get_region')
+    list_display = ('id', 'name', 'description', 'stock_quantity', 'get_category', 'get_region','image_url')
     search_fields = ('name', 'description')
     list_filter = ('category', 'region', 'price')
     ordering = ('-id',)
-    fields = ('name', 'description', 'price', 'stock_quantity', 'category', 'region')
+    fields = ('name', 'description', 'price', 'stock_quantity', 'category', 'region','image_url')
 
     def get_category(self, obj):
         return obj.category.name
