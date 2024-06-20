@@ -15,7 +15,7 @@ This is a full-stack e-commerce application built with Django for the backend an
 
 You can access the live demo of this application at the following URL:
 
-[Live Demo](https://jiji-ecomerce.onrender.com)
+[Live Demo](https://jiji-ghana.vercel.app)
 
 ## API Documentation
 
@@ -36,19 +36,7 @@ python -m venv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 ### Install dependencies:
 pip install -r requirements.txt
-## Set up the database:
-Ensure you have MySQL installed and running. Create a database for your project and configure your settings.py file accordingly.
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'your-database-name',
-        'USER': 'your-database-username',
-        'PASSWORD': 'your-database-password',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
 ### Run migrations:
 python manage.py migrate
 Load initial data:
@@ -60,7 +48,7 @@ python manage.py createsuperuser
 # Run the development server:
 
 python manage.py runserver
-# Access the application:
+# Access the API application:
 Open your browser and go to http://127.0.0.1:8000 to see the application in action.
 
 # Usage
