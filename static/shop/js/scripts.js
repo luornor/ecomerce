@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function fetchCategories() {
-    fetch('/api/categories/')
+    fetch('/categories/')
         .then(response => response.json())
         .then(data => {
             const categorySelect = document.getElementById('filter-category');
@@ -24,7 +24,7 @@ function fetchCategories() {
 }
 
 function fetchRegions() {
-    fetch('/api/regions/')
+    fetch('/regions/')
         .then(response => response.json())
         .then(data => {
             const regionSelect = document.getElementById('filter-region');
@@ -40,7 +40,7 @@ function fetchRegions() {
 }
 
 function fetchProducts(filters = {}) {
-    let url = '/api/products';
+    let url = '/products';
     const params = new URLSearchParams(filters).toString();
     if (params) {
         url += `?${params}`;
@@ -89,7 +89,7 @@ function applyFilters() {
 }
 
 function addToCart(productId) {
-    fetch('/api/cart/', {
+    fetch('/cart/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ function addToCart(productId) {
 
 
 function fetchCart() {
-    fetch('/api/cart/')
+    fetch('/cart/')
         .then(response => response.json())
         .then(data => {
             const cartList = document.querySelector('#cart-list ul');
@@ -139,7 +139,7 @@ function fetchCart() {
 
 
 function updateCartItemQuantity(cartItemId, newQuantity) {
-    fetch(`/api/cart/${cartItemId}/`, {
+    fetch(`/cart/${cartItemId}/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -158,7 +158,7 @@ function updateCartItemQuantity(cartItemId, newQuantity) {
 
 
 function removeFromCart(itemId) {
-    fetch(`/api/cart/${itemId}/`, {
+    fetch(`/cart/${itemId}/`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
