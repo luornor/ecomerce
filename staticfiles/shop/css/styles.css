@@ -1,0 +1,44 @@
+/* static/shop/css/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+}
+main {
+    margin-top: 20px;
+}
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+input {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    max-width: 300px;
+}
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background: #0056b3;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
