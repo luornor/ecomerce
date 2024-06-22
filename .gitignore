@@ -11,4 +11,3 @@ venv/
 # Ignore database files
 # Django
 *.log
-*.sqlite3
